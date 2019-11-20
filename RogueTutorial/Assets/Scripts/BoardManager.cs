@@ -73,15 +73,16 @@ public class BoardManager : MonoBehaviour
         return randomPosition;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void LayoutObjectAtRandom(GameObject[] tileArray, int minimum, int maximum)
     {
-        
+        int ObjectCount = Random.Range(minimum, maximum + 1);
+
+        for ( int i = 0; i < ObjectCount; i++)
+        {
+            Vector3 randomPosition = RandomPosition();
+            GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
+            Instantiate(tileChoice, randomPosition, Quaternion.identity);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
