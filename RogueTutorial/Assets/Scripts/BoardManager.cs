@@ -52,12 +52,13 @@ public class BoardManager : MonoBehaviour
     {
         boardHolder = new GameObject("Board").transform;
 
-        for(int x = -1; x < columns + 1; x++)
+        for (int x = -1; x < columns + 1; x++)
         {
-            for(int y = -1; x < rows + 1; y++)
+            for(int y = -1; y < rows + 1; y++)
             {
                 GameObject toInstantiate = floorTiles[Random.Range(0, floorTiles.Length)];
-                if (x == -1|| y == -1 || x == columns || y == rows)
+
+                if (x == -1 || x == columns || y == -1 || y == rows)
                     toInstantiate = outerWallTiles[Random.Range(0, outerWallTiles.Length)];
 
                 GameObject instance = Instantiate(toInstantiate, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
@@ -66,6 +67,7 @@ public class BoardManager : MonoBehaviour
             }
         }
     }
+
 
     //chooses a random location within bounds of the game board
     Vector3 RandomPosition()
