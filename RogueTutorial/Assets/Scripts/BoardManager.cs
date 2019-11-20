@@ -33,6 +33,7 @@ public class BoardManager : MonoBehaviour
     private Transform boardHolder;
     private List<Vector3> gridPositions = new List<Vector3>();
 
+    //Creates a list containing all locations within game board
     void InitializeList()
     {
         gridPositions.Clear();
@@ -46,6 +47,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    //creates game board and adds floor & outer wall tiles
     void BoardSetup()
     {
         boardHolder = new GameObject("Board").transform;
@@ -65,6 +67,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    //chooses a random location within bounds of the game board
     Vector3 RandomPosition()
     {
         int randomIndex = Random.Range(0, gridPositions.Count);
@@ -73,6 +76,7 @@ public class BoardManager : MonoBehaviour
         return randomPosition;
     }
 
+    //Adds objects to the game board at random, leaving a 1 tile border to prevent impassable levels
     void LayoutObjectAtRandom(GameObject[] tileArray, int minimum, int maximum)
     {
         int ObjectCount = Random.Range(minimum, maximum + 1);
