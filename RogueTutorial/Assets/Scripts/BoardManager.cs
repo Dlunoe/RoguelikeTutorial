@@ -40,7 +40,7 @@ public class BoardManager : MonoBehaviour
 
         for (int x = 1; x < columns -1; x++)
         {
-            for (int y = 1; x < rows - 1; x++)
+            for (int y = 1; y < rows - 1; y++)
             {
                 gridPositions.Add(new Vector3(x, y, 0f));
             }
@@ -81,9 +81,9 @@ public class BoardManager : MonoBehaviour
     //Adds objects to the game board at random, leaving a 1 tile border to prevent impassable levels
     void LayoutObjectAtRandom(GameObject[] tileArray, int minimum, int maximum)
     {
-        int ObjectCount = Random.Range(minimum, maximum + 1);
+        int objectCount = Random.Range(minimum, maximum + 1);
 
-        for ( int i = 0; i < ObjectCount; i++)
+        for ( int i = 0; i < objectCount; i++)
         {
             Vector3 randomPosition = RandomPosition();
             GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
