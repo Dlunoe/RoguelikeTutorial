@@ -17,6 +17,17 @@ public abstract class MovingObject : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         inverseMoveTime = 1f / moveTime;
     }
-    
-   
+    protected IEnumerator SmoothMovement(Vector3 end)
+    {
+        float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
+
+        while (sqrRemainingDistance > float.Epsilon)
+        {
+            Vector3 newPosition = Vector3.MoveTowards(rb2D.position, end, inverseMoveTime * Time.deltaTime);
+            rb2D.MovePosition(newPosition);
+            sqrRemainingDistance = (transform.position - end).sqrMagnitude;
+            yield return null;
+        }
+    }
+
 }
